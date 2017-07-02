@@ -9,4 +9,5 @@ A cms for youbo app.
 ### Powered by
 
 - **react**
+- axios
 - create-react-app with PWA support
