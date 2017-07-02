@@ -1,14 +1,17 @@
-import React, {Component} from 'react';
-import logo from './common/image/logo.png';
+import React, {Component} from 'react'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import Header from './components/Header'
 
 class App extends Component {
     render() {
         return (
-            <div className="App">
-                <img src={logo} alt="logo"/>
-            </div>
-        );
+            <MuiThemeProvider>
+                <div>
+                    <Header></Header>
+                </div>
+            </MuiThemeProvider>
+        )
     }
 }
 
-export default App;
+export default App
