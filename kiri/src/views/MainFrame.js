@@ -10,6 +10,8 @@ import {Link,Route,BrowserRouter as Router} from "react-router-dom";
 
 import Home from './Home';
 import Category from './Category';
+import AppNavBar from "../components/AppNavBar";
+import logo from '../common/image/logo.png';
 import MainPageContent from '../components/MainPageContent';
 
 class MainFrame extends React.Component{
