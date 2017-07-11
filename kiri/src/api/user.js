@@ -12,7 +12,7 @@ export function listUser() {
 }
 
 export function saveUser(username, password, nickname) {
-    const url = BASE_URL + 'users'
+    const url = BASE_URL + 'users';
 
     return axios.post(url, querystring.stringify({
         username: username,
@@ -50,6 +50,34 @@ export function updateInfo(userId, nickname, realname, gender, description) {
 export function listMyTweet(username) {
     const url = BASE_URL + 'users/' + username + '/tweets'
 
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
+}
+
+export function listUserFollow() {
+    const url = BASE_URL + 'user_follows';
+    
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
+}
+
+export function listRole() {
+    const url = BASE_URL + 'roles';
+    
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
+}
+
+
+export function listOrg() {
+    const url = BASE_URL + 'orgs';
+    
     return axios.get(url)
         .then(res => {
             return Promise.resolve(res.data)

@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
-    "material-ui": "^0.18.5",
+    "material-ui": "^1.0.0-alpha.21",
+    "material-ui-icons": "^1.0.0-alpha.19",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-flexbox-grid": "^1.1.3",
