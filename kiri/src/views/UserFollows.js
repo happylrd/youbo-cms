@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MainPageContent from './MainPageContent';
+import MainPageContent from '../components/MainPageContent';
 import {listUserFollow} from '../api/user';
 
 class UserFollows extends React.Component{

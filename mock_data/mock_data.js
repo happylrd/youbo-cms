@@ -4,17 +4,17 @@ var faker = require('faker');
 module.exports = () => {
 	faker.locale = "zh_CN";
 	const data = {
-		orgs: [],
+		orgs: [], //--->
 		user_roles: [],
-		users: [],
-		user_follows: [],
-		tweets: [],
-		favorites: [],
-		collections: [],
-		comments: [],
-		tweet_fragments: [],
+		users: [],//-->
+		user_follows: [],//-->
+		tweets: [],//-->
+		favorites: [],//-->
+		collections: [],//-->
+		comments: [],//-->
+		tweet_fragments: [],//-->
 		org_members: [],
-		roles: []
+		roles: []//--->
 	};
 
 	//roles--------------------------------
@@ -23,15 +23,30 @@ module.exports = () => {
 		data.roles.push({ id: i, name:roles[i],createAt:[2017,7,10,10,40,36],updateAt:[2017,7,10,10,40,37] })
 	}
 	// orgs---------------------------------
-	for (let i = 0; i < 30; i++) {
-		data.orgs.push({ id: i, name: faker.name.findName(),createAt:[2017,7,10,10,40,36],updateAt:[2017,7,10,10,40,37] })
+	for (let i = 0; i < 50; i++) {
+		data.orgs.push({ id:i, name: faker.name.findName(),description:faker.lorem.paragraph() ,
+			picture:faker.lorem.image ,createAt:[2017,7,10,10,40,36],updateAt:[2017,7,10,10,40,37],ownerId:'i' })
 	}
 	//users----------------------------------
-	for (let i = 0; i < 20; i++) {
-		data.users.push({ id: i,
-			username: faker.name.findName(),createAt:[2017,7,10,10,40,36],updateAt:[2017,7,10,10,40,37] })
+	for (let i = 0; i < 100; i++) {
+		data.users.push({
+			id:i,
+			username: faker.name.findName(),
+			password: faker.internet.password(),
+			email:faker.internet.email(),
+			phone:faker.phone.phoneNumber() ,
+			nickname:faker.lorem.word(faker.random.number(1)) ,
+			realname: faker.name.firstName(faker.random.number(1)) + faker.name.lastName(faker.random.number(1)),
+			avatar: faker.image.avatar(),
+			gender: faker.random.boolean(),
+			birthday: [1880,1,1],
+			description: faker.lorem.sentences(),
+			enabled: true,
+			createAt:[2017,7,10,10,40,36],
+			updateAt:[2017,7,10,10,40,37]
+		})
 	}
-	//role_follows---------------------------
+	//user_follows---------------------------
 	faker.seed(100);
 	for(let i=1;i<100;i++){
 		data.user_follows.push({id:i,createAt:[2017,7,10,10,40,36],updateAt:[2017,7,10,10,40,37],
@@ -73,8 +88,33 @@ module.exports = () => {
 		let tf = {id:i,tweetId:faker.random.number(),
 			createAt:[2017,7,10,10,40,36],
 			updateAt:[2017,7,10,10,40,37]};
-		tf["type"] = Math.floor(Math.random()(4)+1);
+		tf["type"] = Math.floor(Math.random()*4+1);
+		if(tf["type"]!=1){
+			tf["content"] = faker.internet.url()
+		}else{
+			tf["content"] = faker.lorem.sentences();
+		}
 		data.tweet_fragments.push(tf);
+	}
+
+	//user_roles
+	for(let i=1;i<100;i++){
+		data.user_roles.push({
+			userId:faker.random.number(),
+			roleId:Math.floor(Math.random()*3+1)
+		})
+	}
+
+	//
+	for(let i=1;i<20;i++){
+		data.org_members.push({
+			id:i,
+			createAt:[2017,7,10,10,40,36],
+			updateAt:[2017,7,10,10,40,37],
+			userId:faker.random.number(),
+			orgId:faker.random.number(),
+			role:Math.floor(Math.random()*3+1)
+		})
 	}
 
 	return data

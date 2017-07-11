@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import MainPageListContent from '../components/MainPageListContent';
+import MainPageListContent from './MainPageListContent';
 import {timeToString} from '../utils/Time';
 class MainPageContent extends React.Component{
 

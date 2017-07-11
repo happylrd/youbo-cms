@@ -3,7 +3,7 @@ import React from "react";
 import MainPageListContent from '../components/MainPageListContent';
 import {listTweet} from '../api/tweet';
 
-import MainPageContent from './MainPageContent';
+import MainPageContent from '../components/MainPageContent';
 import {timeToString} from "../utils/Time";
 
 let counter = 0;
