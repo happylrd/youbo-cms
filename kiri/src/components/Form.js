@@ -46,13 +46,14 @@ class Form extends React.Component{
 									           defaultValue = {data.value}
 									           className={classes.textField}
 								               fullWidth={true}
+									           type={data.type}
 									/>
 								</Grid>
 							</Grid>
 						);
 					})}
 				</Grid>
-				<Button className={classes.submit}>提交</Button>
+				<Button className={classes.submit}>保存</Button>
 			</Paper>
 		);
 	}

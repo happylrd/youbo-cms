@@ -1,9 +1,9 @@
 import React from 'react';
 
-import MainPageListContent from '../components/MainPageListContent';
-import {listFragments} from '../api/tweet';
-import {typeToConstant} from '../utils/typeToConstant';
-import {timeToString} from '../utils/Time';
+import MainPageListContent from '../../components/MainPageListContent';
+import {listFragments} from '../../api/tweet';
+import {typeToConstant} from '../../utils/typeToConstant';
+import {timeToString} from '../../utils/Time';
 
 
 

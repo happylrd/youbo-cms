@@ -1,7 +1,7 @@
 import React from 'react';
 
-import MainPageContent from "../components/MainPageContent"
-import {listUser} from '../api/user';
+import MainPageContent from "../../components/MainPageContent"
+import {listUser,deleteUser} from '../../api/user';
 
 export default class Users extends React.Component{
 
@@ -11,6 +11,7 @@ export default class Users extends React.Component{
 				properties={["username","id"]}
 				callback={listUser}
                 url={"/Users"}
+			    delete={deleteUser}
 			/>
 		)
 	}

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import MainPageContent from "../components/MainPageContent"
-import {listOrg} from '../api/user';
+import MainPageContent from "../../components/MainPageContent"
+import {listOrg} from '../../api/user';
 
 export default class Orgs extends React.Component{
 	

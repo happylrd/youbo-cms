@@ -24,8 +24,8 @@ export function saveUser(username, password, nickname) {
         })
 }
 
-export function getUser(username) {
-    const url = BASE_URL + 'users/' + username
+export function getUser(id) {
+    const url = BASE_URL + 'users/' + id;
 
     return axios.get(url)
         .then(res => {
@@ -74,7 +74,6 @@ export function listRole() {
         })
 }
 
-
 export function listOrg() {
     const url = BASE_URL + 'orgs';
     
@@ -82,4 +81,73 @@ export function listOrg() {
         .then(res => {
             return Promise.resolve(res.data)
         })
+}
+
+export function listComments() {
+    const url = BASE_URL + 'comments';
+
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
+}
+
+
+export function listCollections() {
+    const url = BASE_URL + 'collections';
+
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
+}
+
+
+export function listFavorites() {
+    const url = BASE_URL + 'favorites';
+
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
+}
+
+
+export function listOrgMembers() {
+    const url = BASE_URL + 'org_members';
+    
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
+}
+
+export function deleteUser(id){
+    const url = BASE_URL + 'users/' + id;
+    axios.delete(url);
+}
+
+export function  deleteUserFollow(id) {
+    const url =BASE_URL + "user_follows/" +id;
+    axios.delete(url);
+}
+
+export function deleteTweets(id){
+    const url = BASE_URL + "tweets/" + id;
+    axios.delete(url);
+}
+
+export function deleteTweetFragments(id){
+    const url = BASE_URL + "tweet_fragments/" + id;
+    axios.delete(url);
+}
+
+export function deleteRole(id){
+    const url = BASE_URL + "roles/" + id;
+    axios.delete(url);
+}
+
+export function deleteOrgs(id){
+    const url = BASE_URL + "orgs/" + id;
+    axios.delete(url);
 }

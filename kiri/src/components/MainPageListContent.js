@@ -11,6 +11,7 @@ import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox';
 import Button from 'material-ui/Button';
 import {Link} from 'react-router-dom';
+import {deleteUser} from '../api/user';
 
 
 class MainPageListContentHead extends React.Component {
@@ -100,35 +101,19 @@ class MainPageListContent extends React.Component {
 		this.setState({ selected: [] });
 	};
 	
-	
-	handleClick = (event, id) => {
-		const { selected } = this.state;
-		const selectedIndex = selected.indexOf(id);
-		let newSelected = [];
-		
-		if (selectedIndex === -1) {
-			newSelected = newSelected.concat(selected, id);
-		} else if (selectedIndex === 0) {
-			newSelected = newSelected.concat(selected.slice(1));
-		} else if (selectedIndex === selected.length - 1) {
-			newSelected = newSelected.concat(selected.slice(0, -1));
-		} else if (selectedIndex > 0) {
-			newSelected = newSelected.concat(
-				selected.slice(0, selectedIndex),
-				selected.slice(selectedIndex + 1),
-			);
-		}
-		
-		this.setState({ selected: newSelected });
+
+
+	delete = (e) => {
+
+		this.props.delete(e.currentTarget.id)
+
 	};
-	
+
 	isSelected = id => this.state.selected.indexOf(id) !== -1;
 	
 	render() {
 		const { data,classes }= this.props;
 		const {order, orderBy} = this.state;
-
-
 
 		return (
 			<Paper className={classes.paper}>
@@ -146,7 +131,6 @@ class MainPageListContent extends React.Component {
 							return (
 								<TableRow
 									hover
-									onClick={event => this.handleClick(event, n.id)}
 									role="checkbox"
 									aria-checked={isSelected}
 									tabIndex="-1"
@@ -168,7 +152,7 @@ class MainPageListContent extends React.Component {
 										<Link to={this.props.url+"/"+n["id"]}>
 											<Button>编辑</Button>
 										</Link>
-										<Button>删除</Button>
+										<Button id={n["id"]} onClick={this.delete}>删除</Button>
 									</TableCell>
 								</TableRow>
 							);

@@ -12,7 +12,7 @@ export function listTweet() {
 }
 
 export function listFragments() {
-    const url = BASE_URL + 'tweetFragments';
+    const url = BASE_URL + 'tweet_fragments';
 
     return axios.get(url)
         .then(res => {

@@ -56,12 +56,13 @@ class AppNavBar extends React.Component {
 
 	render() {
 		const classes = this.props.classes;
+		const {onLeftIconButtonTouchTap} = this.props;
 		return (
 			<div className={classes.root}>
 				<AppBar position="static" >
 					<Toolbar>
 						<IconButton color="contrast" aria-label="Menu"
-						            onClick={this.props.onLeftIconButtonTouchTap}
+						            onClick={onLeftIconButtonTouchTap}
 					                className={this.props.offset}>
 							<MenuIcon />
 						</IconButton>

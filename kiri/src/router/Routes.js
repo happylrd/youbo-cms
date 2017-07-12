@@ -4,7 +4,7 @@ import {BrowserRouter as Router,Route} from "react-router-dom";
 
 import MainFrame from '../views/MainFrame';
 import Home from '../views/Home';
-import Category from '../views/Tweets';
+import Category from '../views/listPages/Tweets';
 
 const Routes = () => {
 	return(

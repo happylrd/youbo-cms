@@ -1,9 +1,9 @@
 import React from 'react'
 
-import {getTweet} from '../api/tweet';
+import {getTweet} from '../../api/tweet';
 
-import Form from '../components/Form';
-import {timeToString} from '../utils/Time';
+import Form from '../../components/Form';
+import {timeToString} from '../../utils/Time';
 
 class TweetDetail extends React.Component{
 
@@ -18,8 +18,8 @@ class TweetDetail extends React.Component{
 
 
 	componentWillMount(){
-		const {tweetId} = this.props.match.params;
-		getTweet(tweetId).then(tweet=>{
+		const id = this.props.match.params.id;
+		getTweet(id).then(tweet=>{
 			let data = this.state.data;
 			data.push({title:"userId",value:tweet.userId,disabled:true});
 			data.push({title:"id",value:tweet.id,disabled:true});

@@ -1,12 +1,8 @@
 import React from "react";
 
-import MainPageListContent from '../components/MainPageListContent';
-import {listTweet} from '../api/tweet';
+import {listTweet} from '../../api/tweet';
 
-import MainPageContent from '../components/MainPageContent';
-import {timeToString} from "../utils/Time";
-
-let counter = 0;
+import MainPageContent from '../../components/MainPageContent';
 
 
 class Tweets extends React.Component{

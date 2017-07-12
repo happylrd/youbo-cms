@@ -17,15 +17,21 @@ import ReportIcon from 'material-ui-icons/Report';
 import {Link,Route,BrowserRouter as Router,Switch} from "react-router-dom";
 
 import Home from './Home';
-import Tweets from './Tweets';
+import Tweets from './listPages/Tweets';
 import AppNavBar from "../components/AppNavBar";
-import TweetDetail from './TweetDetail';
+import TweetDetail from './detail/TweetDetail';
 import logo from '../common/image/logo.png';
-import TweetFragments  from './TweetFragments';
-import UserFollows from './UserFollows';
-import Users from './Users';
-import Role from './Role';
-import Orgs from './Orgs';
+import TweetFragments  from './listPages/TweetFragments';
+import UserFollows from './listPages/UserFollows';
+import Users from './listPages/Users';
+import Role from './listPages/Role';
+import UserDetail from './detail/UserDetail';
+import Orgs from './listPages/Orgs';
+import Comments from './listPages/Comments'
+import OrgMembers from './listPages/OrgMembers';
+import Collections from './listPages/Collections';
+import Favorites from './listPages/Favorites';
+
 
 
 class MainFrame extends React.Component{
@@ -113,6 +119,39 @@ class MainFrame extends React.Component{
 						<ListItemText primary="Org" />
 					</ListItem>
 				</Link>
+
+				<Link to="/OrgMembers" style={{textDecoration:"none"}} >
+					<ListItem button>
+						<ListItemIcon>
+							<ReportIcon />
+						</ListItemIcon>
+						<ListItemText primary="OrgMembers" />
+					</ListItem>
+				</Link>
+				<Link to="/Comments" style={{textDecoration:"none"}} >
+					<ListItem button>
+						<ListItemIcon>
+							<ReportIcon />
+						</ListItemIcon>
+						<ListItemText primary="Comments" />
+					</ListItem>
+				</Link>
+				<Link to="/Collections" style={{textDecoration:"none"}} >
+					<ListItem button>
+						<ListItemIcon>
+							<ReportIcon />
+						</ListItemIcon>
+						<ListItemText primary="Collections" />
+					</ListItem>
+				</Link>
+				<Link to="/Favorites" style={{textDecoration:"none"}} >
+					<ListItem button>
+						<ListItemIcon>
+							<ReportIcon />
+						</ListItemIcon>
+						<ListItemText primary="Favorites" />
+					</ListItem>
+				</Link>
 			</div>
 		);
 
@@ -146,13 +185,19 @@ class MainFrame extends React.Component{
 							<Switch>
 								<Route path='/Home' component={Home}/>
 								<Route path="/Tweets" exact component={Tweets}/>
-								<Route path="/Tweets/:tweetId" component={TweetDetail}/>
 								<Route path="/Fragments" component={TweetFragments} />
-								<Route path="/Users" component={Users} />
+								<Route path="/Users"  exact component={Users} />
 								<Route path="/UserFollow" component={UserFollows} />
-								<Route path="/Users" component={Users} />
 								<Route path="/Role" component={Role} />
 								<Route path="/Orgs" component={Orgs} />
+								<Route path="/Tweets/:id" component={TweetDetail}/>
+								<Route path="/Users/:id" component={UserDetail}/>
+								
+								<Route path="/OrgMembers" component={OrgMembers} />
+								<Route path="/Comments" component={Comments} />
+								<Route path="/Collections" component={Collections} />
+								<Route path="/Favorites" component={Favorites} />
+							
 							</Switch>
 						}
 					</div>

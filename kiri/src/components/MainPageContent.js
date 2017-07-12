@@ -43,18 +43,14 @@ class MainPageContent extends React.Component{
 				result["rowId"] = counter;
 				data.push(result)
 			});
-			console.log("willMount表头",this.head);
 			this.setState({data})
 		})
 	}
 
 	render(){
 		if(this.state.data){
-			console.log("列属性",this.properties);
-			console.log("表头",this.head);
 			if(this.head[0].id != 'operation'){
 				this.head = this.head.reverse();
-				console.log("reverse 已经执行!!! 执行之后的：head",this.head)
 			}
 			return (
 				<MainPageListContent
@@ -62,6 +58,7 @@ class MainPageContent extends React.Component{
 					data={this.state.data}
 					properties={this.properties}
 					url={this.props.url}
+				    delete={this.props.delete}
 				/>
 			)
 		}else{
