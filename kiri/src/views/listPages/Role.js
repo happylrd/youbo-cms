@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {listRole} from "../../api/user"
+import {listRole,deleteRole} from "../../api/user"
 import MainPageContent from '../../components/MainPageContent';
 export default class Role extends React.Component{
 
@@ -12,6 +12,7 @@ export default class Role extends React.Component{
 				url="/Role"
 			    properties={this.properties}
 			    callback={listRole}
+			    delete={deleteRole}
 			/>
 		)
 	}

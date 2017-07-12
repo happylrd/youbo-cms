@@ -33,15 +33,10 @@ export function getUser(id) {
         })
 }
 
-export function updateInfo(userId, nickname, realname, gender, description) {
-    const url = BASE_URL + 'users/' + userId
+export function updateUserInfo(userId,info) {
+    const url = BASE_URL + 'users/' + userId;
 
-    return axios.put(url, querystring.stringify({
-        nickname: nickname,
-        realname: realname,
-        gender: gender,
-        description: description
-    }))
+    return axios.put(url, querystring.stringify(info))
         .then(res => {
             return Promise.resolve(res.data)
         })
@@ -83,14 +78,7 @@ export function listOrg() {
         })
 }
 
-export function listComments() {
-    const url = BASE_URL + 'comments';
 
-    return axios.get(url)
-        .then(res => {
-            return Promise.resolve(res.data)
-        })
-}
 
 
 export function listCollections() {
@@ -125,29 +113,97 @@ export function listOrgMembers() {
 export function deleteUser(id){
     const url = BASE_URL + 'users/' + id;
     axios.delete(url);
+    return 1;
 }
 
 export function  deleteUserFollow(id) {
     const url =BASE_URL + "user_follows/" +id;
     axios.delete(url);
-}
-
-export function deleteTweets(id){
-    const url = BASE_URL + "tweets/" + id;
-    axios.delete(url);
-}
-
-export function deleteTweetFragments(id){
-    const url = BASE_URL + "tweet_fragments/" + id;
-    axios.delete(url);
+    return 1;
 }
 
 export function deleteRole(id){
     const url = BASE_URL + "roles/" + id;
     axios.delete(url);
+    return 1;
 }
 
-export function deleteOrgs(id){
+export function deleteOrg(id){
     const url = BASE_URL + "orgs/" + id;
     axios.delete(url);
+    return 1;
+}
+export function deleteOrgMember(id){
+    const url = BASE_URL + "org_members /" + id;
+    axios.delete(url);
+    return 1;
+}
+
+export function deleteFavorite(id){
+    const url = BASE_URL + "favorites/" + id;
+    axios.delete(url);
+    return 1;
+}
+
+
+
+export function deleteCollection(id){
+    const url = BASE_URL + "collections/" + id;
+    axios.delete(url);
+    return 1;
+}
+
+
+export function getUserFollow(id) {
+    const url = BASE_URL + 'user_follows/' + id;
+
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
+}
+
+export function getRole(id) {
+    const url = BASE_URL + 'roles/' + id;
+
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
+}
+
+export function getOrg(id) {
+    const url = BASE_URL + 'orgs/' + id;
+
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
+}
+
+export function getOrgMember(id) {
+    const url = BASE_URL + 'org_members/' + id;
+
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
+}
+
+export function getCollection(id) {
+    const url = BASE_URL + 'collections/' + id;
+
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
+}
+
+export function getFavorite(id) {
+    const url = BASE_URL + 'favorites/' + id;
+
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MainPageContent from "../../components/MainPageContent";
-import {listComments} from '../../api/user';
+import {listComments,deleteComment} from '../../api/tweet';
 
 export default class Comments extends React.Component{
 
@@ -11,6 +11,7 @@ export default class Comments extends React.Component{
                 properties={["tweetId","userId","id"]}
                 callback={listComments}
                 url={"/Comments"}
+                delete={deleteComment}
             />
         )
     }

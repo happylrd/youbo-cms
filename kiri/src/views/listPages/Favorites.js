@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MainPageContent from "../../components/MainPageContent";
-import {listFavorites} from '../../api/user';
+import {listFavorites,deleteFavorite} from '../../api/user';
 
 export default class Favorites extends React.Component{
 
@@ -10,7 +10,8 @@ export default class Favorites extends React.Component{
             <MainPageContent
                 properties={["tweetId","userId","id"]}
                 callback={listFavorites}
-                url={"/Favorite"}
+                url={"/Favorites"}
+                delete={deleteFavorite}
             />
         )
     }

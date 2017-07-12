@@ -49,7 +49,8 @@ module.exports = () => {
 	//user_follows---------------------------
 	faker.seed(100);
 	for(let i=1;i<100;i++){
-		data.user_follows.push({id:i,createAt:[2017,7,10,10,40,36],updateAt:[2017,7,10,10,40,37],
+		data.user_follows.push({id:i,
+			createAt:[2017,7,10,10,40,36],updateAt:[2017,7,10,10,40,37],
 			originId:faker.random.number(),targetId:faker.random.number()
 		})
 	}
@@ -100,6 +101,7 @@ module.exports = () => {
 	//user_roles
 	for(let i=1;i<100;i++){
 		data.user_roles.push({
+			id:i,
 			userId:faker.random.number(),
 			roleId:Math.floor(Math.random()*3+1)
 		})

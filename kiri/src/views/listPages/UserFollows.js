@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MainPageContent from '../../components/MainPageContent';
-import {listUserFollow} from '../../api/user';
+import {listUserFollow,deleteUserFollow} from '../../api/user';
 
 class UserFollows extends React.Component{
 	
@@ -11,6 +11,7 @@ class UserFollows extends React.Component{
 				callback={listUserFollow}
 				properties= {["targetId","originId","id"]}
 				url={"/UserFollow"}
+			    delete={deleteUserFollow}
 			/>
 		)
 	}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MainPageContent from "../../components/MainPageContent"
-import {listOrg} from '../../api/user';
+import {listOrg,deleteOrg} from '../../api/user';
 
 export default class Orgs extends React.Component{
 	
@@ -11,6 +11,7 @@ export default class Orgs extends React.Component{
 				properties={["name","id"]}
 				callback={listOrg}
 				url={"/Orgs"}
+			    delete={deleteOrg}
 			/>
 		)
 	}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MainPageListContent from '../../components/MainPageListContent';
-import {listFragments} from '../../api/tweet';
+import {listFragments,deleteTweetFragment} from '../../api/tweet';
 import {typeToConstant} from '../../utils/typeToConstant';
 import {timeToString} from '../../utils/Time';
 
@@ -54,6 +54,7 @@ class TweetFragments extends React.Component{
 					data={this.state.data}
 					properties={this.properties}
 					url="/Fragments"
+				    delete={deleteTweetFragment}
 				/>
 			)
 		}else{

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MainPageContent from "../../components/MainPageContent";
-import {listCollections} from '../../api/user';
+import {listCollections,deleteCollection} from '../../api/user';
 
 export default class Collections extends React.Component{
 
@@ -11,6 +11,7 @@ export default class Collections extends React.Component{
                 properties={["tweetId","userId","id"]}
                 callback={listCollections}
                 url={"/Collections"}
+                delete={deleteCollection}
             />
         )
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {getUser} from '../../api/user';
+import {getUser,updateUserInfo} from '../../api/user';
 import Editor from '../../components/Editor';
 class UserDetail extends React.Component{
 
@@ -13,7 +13,7 @@ class UserDetail extends React.Component{
 		{title:"realname",disabled:false,type:"text"},
 		{title:"avatar",disabled:false,type:"url"},
 		{title:"gender",disabled:false,type:"text"},
-		{title:"birthday",disabled:false,type:"date"},
+		{title:"birthday",disabled:false,type:"text"},
 		{title:"description",disabled:false,type:"text"},
 		{title:"enabled",disabled:false,type:"text"}
 	];
@@ -24,6 +24,7 @@ class UserDetail extends React.Component{
 				id={this.props.match.params.id}
 				properties = {this.properties}
 				callback={getUser}  
+			    submit={updateUserInfo}
 			/>
 		)
 	}

@@ -9,10 +9,8 @@ import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import HomeIcon from 'material-ui-icons/Home';
 import DraftsIcon from 'material-ui-icons/Drafts';
-import StarIcon from 'material-ui-icons/Star';
 import SendIcon from 'material-ui-icons/Send';
 import MailIcon from 'material-ui-icons/Mail';
-import DeleteIcon from 'material-ui-icons/Delete';
 import ReportIcon from 'material-ui-icons/Report';
 import {Link,Route,BrowserRouter as Router,Switch} from "react-router-dom";
 
@@ -31,7 +29,14 @@ import Comments from './listPages/Comments'
 import OrgMembers from './listPages/OrgMembers';
 import Collections from './listPages/Collections';
 import Favorites from './listPages/Favorites';
-
+import UserFollowDetail from './detail/UserFollowDetail';
+import RoleDetail from './detail/RoleDetail';
+import OrgDetail from './detail/OrgDetail' ;
+import OrgMemberDetail from './detail/OrgMemberDetail' ;
+import TweetFragmentDetail from './detail/TweetFragmentDetail' ;
+import CommentDetail from './detail/CommentDetail' ;
+import CollectionDetail from './detail/CollectionDetail' ;
+import FavoriteDetail from './detail/FavoriteDetail' ;
 
 
 class MainFrame extends React.Component{
@@ -185,18 +190,26 @@ class MainFrame extends React.Component{
 							<Switch>
 								<Route path='/Home' component={Home}/>
 								<Route path="/Tweets" exact component={Tweets}/>
-								<Route path="/Fragments" component={TweetFragments} />
+								<Route path="/Fragments" exact component={TweetFragments} />
 								<Route path="/Users"  exact component={Users} />
-								<Route path="/UserFollow" component={UserFollows} />
-								<Route path="/Role" component={Role} />
-								<Route path="/Orgs" component={Orgs} />
+								<Route path="/UserFollow" exact component={UserFollows} />
+								<Route path="/Role" exact component={Role} />
+								<Route path="/Orgs" exact component={Orgs} />
+								<Route path="/OrgMembers" exact component={OrgMembers} />
+								<Route path="/Comments" exact component={Comments} />
+								<Route path="/Collections" exact component={Collections} />
+								<Route path="/Favorites" exact component={Favorites} />
+
 								<Route path="/Tweets/:id" component={TweetDetail}/>
 								<Route path="/Users/:id" component={UserDetail}/>
-								
-								<Route path="/OrgMembers" component={OrgMembers} />
-								<Route path="/Comments" component={Comments} />
-								<Route path="/Collections" component={Collections} />
-								<Route path="/Favorites" component={Favorites} />
+								<Route path="/UserFollow/:id" component={UserFollowDetail} />
+								<Route path="/Role/:id" component={RoleDetail} />
+								<Route path="/Orgs/:id" component={OrgDetail} />
+								<Route path="/OrgMembers/:id" component={OrgMemberDetail} />
+								<Route path="/Fragments/:id" component={TweetFragmentDetail} />
+								<Route path="/Comments/:id" component={CommentDetail} />
+								<Route path="/Collections/:id" component={CollectionDetail} />
+								<Route path="/Favorites/:id" component={FavoriteDetail} />
 							
 							</Switch>
 						}

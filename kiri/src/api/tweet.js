@@ -63,8 +63,48 @@ export function saveComment(userId, tweetId, content) {
         })
 }
 
-export function getComment(tweetId) {
-    const url = BASE_URL + 'tweets/' + tweetId + '/comments';
+
+export function deleteComment(id){
+    const url = BASE_URL + "comments/" + id;
+    axios.delete(url);
+    return 1;
+}
+
+export function deleteTweetFragment(id){
+    const url = BASE_URL + "tweet_fragments/" + id;
+    axios.delete(url);
+    return 1;
+}
+
+
+export function deleteTweet(id){
+    const url = BASE_URL + "tweets/" + id;
+    axios.delete(url);
+    return 1;
+}
+
+export function listComments() {
+    const url = BASE_URL + 'comments';
+    
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
+}
+
+
+export function getComment(id) {
+    const url = BASE_URL + 'comments/' + id;
+
+    return axios.get(url)
+        .then(res => {
+            return Promise.resolve(res.data)
+        })
+}
+
+
+export function getTweetFragment(tweetId) {
+    const url = BASE_URL + 'tweet_fragments/'+ tweetId ;
 
     return axios.get(url)
         .then(res => {
