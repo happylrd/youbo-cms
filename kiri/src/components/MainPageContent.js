@@ -49,7 +49,7 @@ class MainPageContent extends React.Component{
 
 	render(){
 		if(this.state.data){
-			if(this.head[0].id != 'operation'){
+			if(this.head[0].id !== 'operation'){
 				this.head = this.head.reverse();
 			}
 			return (

@@ -11,7 +11,6 @@ import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox';
 import Button from 'material-ui/Button';
 import {Link} from 'react-router-dom';
-import {deleteUser} from '../api/user';
 
 
 class MainPageListContentHead extends React.Component {
@@ -56,8 +55,6 @@ class MainPageListContentHead extends React.Component {
 	}
 }
 
-
-
 const styleSheet = createStyleSheet('MainPageListContent', theme => ({
 	paper: {
 		width: '100%',
@@ -75,7 +72,6 @@ class MainPageListContent extends React.Component {
 		selected: []
 		
 	};
-
 
 	
 	handleRequestSort = (event, property) => {
@@ -101,12 +97,31 @@ class MainPageListContent extends React.Component {
 		this.setState({ selected: [] });
 	};
 	
+	handleClick = (event, id) => {
+		const { selected } = this.state;
+		const selectedIndex = selected.indexOf(id);
+		let newSelected = [];
 
+		if (selectedIndex === -1) {
+			newSelected = newSelected.concat(selected, id);
+		} else if (selectedIndex === 0) {
+			newSelected = newSelected.concat(selected.slice(1));
+		} else if (selectedIndex === selected.length - 1) {
+			newSelected = newSelected.concat(selected.slice(0, -1));
+		} else if (selectedIndex > 0) {
+			newSelected = newSelected.concat(
+				selected.slice(0, selectedIndex),
+				selected.slice(selectedIndex + 1),
+			);
+		}
+
+		this.setState({ selected: newSelected });
+	};
 
 	delete = (e) => {
-
-		this.props.delete(e.currentTarget.id)
-
+		if(this.props.delete(e.currentTarget.id)===1){
+			window.location.reload();
+		}
 	};
 
 	isSelected = id => this.state.selected.indexOf(id) !== -1;
@@ -132,6 +147,7 @@ class MainPageListContent extends React.Component {
 								<TableRow
 									hover
 									role="checkbox"
+									onClick={event => this.handleClick(event, n.id)}
 									aria-checked={isSelected}
 									tabIndex="-1"
 									key={n.rowId}
