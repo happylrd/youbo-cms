@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Snackbar from 'material-ui/Snackbar';
+
 import Form from './Form';
 import {validateEmail,validatePhone,validateURL} from '../utils/Validator';
 
@@ -10,7 +12,9 @@ class Editor extends React.Component{
 
 		this.state = {
 			data: [],
-			submitData:{}
+			submitData:{},
+			msg:"",
+			open:false
 		}
 	};
 
@@ -35,15 +39,16 @@ class Editor extends React.Component{
 		})
 	}
 
-	handleChildChange = (key,value,type) => {
-		let msg = "";
+	handleChildChange = (key,value) => {
+		let msg = this.state.msg;
 		let submitData = this.state.submitData;
-		switch(type){
+		switch(key){
 			case "email":
 				if(validateEmail(value)==null){
 					msg = "邮箱格式不正确"
 				}else{
 					submitData[key] = value;
+					msg = "success"
 				}
 				break;
 			case "url":
@@ -51,34 +56,49 @@ class Editor extends React.Component{
 					msg = key+"地址不正确"
 				}else{
 					submitData[key] = value;
+					msg = "success"
 				}
 				break;
 			case "phone":
-				if(validatePhone(value)){
+				console.log("验证手机");
+				if(validatePhone(value)==null){
 					msg = "电话格式不正确";
 				}else{
 					submitData[key] = value;
+					msg = "success"
 				}
 				break;
 			default:
 				submitData[key] = value;
+				msg = "success"
 		}
-		this.setState(submitData);
+		this.setState({submitData,msg});
+	};
+
+	handleRequestClose = () => {
+		this.setState({ open: false });
 	};
 
 	submit = () => {
-		let date = new Date();
-		let updateAt = [];
-		updateAt.push(date.getYear()+1900);
-		updateAt.push((date.getMonth()+1)%12);
-		updateAt.push((date.getDay()+9)%30);
-		updateAt.push(date.getHours());
-		updateAt.push(date.getMinutes());
-		updateAt.push(date.getSeconds());
-		let submitData = this.state.submitData;
-		submitData["updateAt"] = updateAt;
-		this.props.submit(this.props.id,submitData);
-		this.setState(submitData);
+		if(this.state.msg==="success"){
+			let date = new Date();
+			let updateAt = [];
+			updateAt.push(date.getYear()+1900);
+			updateAt.push((date.getMonth()+1)%12);
+			updateAt.push((date.getDay()+9)%30);
+			updateAt.push(date.getHours());
+			updateAt.push(date.getMinutes());
+			updateAt.push(date.getSeconds());
+			let submitData = this.state.submitData;
+			submitData["updateAt"] = updateAt;
+			this.props.submit(this.props.id,submitData);
+			this.setState(submitData);
+		}
+		else if(this.state.msg===""){
+			this.setState({open:true,msg:"请更改数据在提交"})
+		}else{
+			this.setState({open:true})
+		}
 	};
 
 	render(){
@@ -86,12 +106,21 @@ class Editor extends React.Component{
 		console.log(this.state);
 		if(this.state.data){
 			return (
-				<Form
-					id={this.props.id}
-					datas={this.state.data}
-				    onChange={this.handleChildChange}
-				    submit={this.submit}
-				/>
+				<div>
+					<Form
+						id={this.props.id}
+						datas={this.state.data}
+					    onChange={this.handleChildChange}
+					    submit={this.submit}
+					/>
+					<Snackbar
+						anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+						open={this.state.open}
+						onRequestClose={this.handleRequestClose}
+						SnackbarContentProps={{'aria-describedby': 'message-id'}}
+						message={<span id="message-id">{this.state.msg}</span>}
+					/>
+				</div>
 			)
 		}else{
 			return(

@@ -8,7 +8,7 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
-
+import Snackbar from 'material-ui/Snackbar';
 import AppBarRightElement from './AppBarRightElement';
 import LoginDialog from './LoginDialog';
 
@@ -30,12 +30,13 @@ class AppNavBar extends React.Component {
 		// 初始状态
 		this.state = {
 			open:false,
-			login:false
+			login:false,
+			username:"luoop",
+			password:"1234567",
+			msg:"",
+			snackbarOpen:false
 		};
-
-		this.data = {
-			username:"luoop"
-		}
+		
 	}
 
 	handleRequestClose = () =>{
@@ -46,12 +47,21 @@ class AppNavBar extends React.Component {
 		this.setState({open:true});
 	};
 
+	handleSnackbarClose = () =>{
+		this.setState({snackbarOpen:false});
+	};
+
 	logOut = () =>{
 		this.setState({login:!this.state.login})
 	};
 
-	handleDialogLogin = () => {
-		this.setState({login:!this.state.login,open:false});
+	handleDialogLogin = (form) => {
+		if(form.username===this.state.username&&form.password===this.state.password){
+			console.log("login success");
+			this.setState({login:true,open:false})
+		}else{
+			this.setState({msg:"请输入正确的用户名和密码",snackbarOpen:true})
+		}
 	};
 
 	render() {
@@ -70,7 +80,7 @@ class AppNavBar extends React.Component {
 							Youbo
 						</Typography>
 						{this.state.login?
-							<AppBarRightElement username={this.data.username} onTouchTap={this.logOut} />
+							<AppBarRightElement username={this.state.username} onTouchTap={this.logOut} />
 							:
 							<Button color="contrast" onClick={this.handleRequestOpen}>Login</Button>
 						}
@@ -80,12 +90,20 @@ class AppNavBar extends React.Component {
 				<LoginDialog
 					open={this.state.open}
 					handleRequestClose={this.handleRequestClose}
-				    handleLoginState={this.handleDialogLogin}
+				    handleLogin={this.handleDialogLogin}
+				/>
+				<Snackbar
+					anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+					open={this.state.snackbarOpen}
+					onRequestClose={this.handleSnackbarClose}
+					SnackbarContentProps={{'aria-describedby': 'message-id'}}
+					message={<span id="message-id">{this.state.msg}</span>}
 				/>
 			</div>
 		);
 	}
 }
+
 
 
 export default withStyles(styleSheet)(AppNavBar);

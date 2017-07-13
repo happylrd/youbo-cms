@@ -12,7 +12,7 @@ function FlatButtons(props) {
 	const classes = props.classes;
 	return (
 		<div>
-			<Button color="contrast" className={classes.button}>
+			<Button onClick={props.onTouchTap} color="contrast" className={classes.button}>
 				{props.label}
 			</Button>
 		</div>

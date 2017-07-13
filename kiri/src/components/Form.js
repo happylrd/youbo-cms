@@ -40,16 +40,13 @@ class Form extends React.Component{
 	handleChange = (e) =>{
 		let title = e.currentTarget.childNodes[0].innerText;
 		let value = e.currentTarget.childNodes[1].firstChild.value;
-		let type = e.currentTarget.childNodes[1].firstChild.type;
-		
-		this.props.onChange(title,value,type);
+		this.props.onChange(title,value);
 
 	};
 	
 
 	render(){
 		const {classes,datas} =this.props;
-		console.log("preData",this.state.preData);
 		return(
 			<Paper className={classes.root}>
 				<Grid container gutter={2}>

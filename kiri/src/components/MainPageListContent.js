@@ -117,7 +117,7 @@ class MainPageListContent extends React.Component {
 
 		this.setState({ selected: newSelected });
 	};
-
+	
 	delete = (e) => {
 		if(this.props.delete(e.currentTarget.id)===1){
 			window.location.reload();

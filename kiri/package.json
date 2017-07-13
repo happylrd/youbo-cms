@@ -12,8 +12,7 @@
     "react-router-dom": "^4.1.1",
     "react-scripts": "1.0.10",
     "react-tap-event-plugin": "^2.0.1",
-    "selectly": "^0.5.0",
-    "classnames": "latest"
+    "selectly": "^0.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
