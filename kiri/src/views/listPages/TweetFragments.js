@@ -22,13 +22,12 @@ class TweetFragments extends React.Component{
 				{ id: 'type', numeric: false, disablePadding: true, label: 'type' },
 				{ id: 'createAt', numeric: false, disablePadding: true, label: "createAt" },
 				{ id: 'updateAt', numeric: false, disablePadding: true, label: 'updateAt' },
-				{ id: 'tweetId', numeric: false, disablePadding: true, label: 'tweetId' },
 				{ id: 'operation', numeric: false, disablePadding: false, label: '操作' }
 			]
 		}
 	}
 
-	properties = ["id","type","createAt","updateAt","tweetId"];
+	properties = ["id","type","createAt","updateAt"];
 
 	componentWillMount() {
 		listFragments().then(res=>{
@@ -38,7 +37,7 @@ class TweetFragments extends React.Component{
 				counter += 1;
 				data.push({
 					rowId:counter+1,id:i.id,type:typeToConstant(i.type),
-					tweetId:i.tweetId, createAt:timeToString(i.createAt),updateAt:timeToString(i.updateAt)});
+					createAt:timeToString(i.createAt),updateAt:timeToString(i.updateAt)});
 			});
 
 			this.setState({data});

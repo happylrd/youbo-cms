@@ -5,7 +5,8 @@ import Editor from '../../components/Editor';
 class TweetFragmentDetail extends React.Component{
 
     properties = [
-        {title:"id",disabled:false,type:"text"},
+        {title:"content",disabled:false,type:"text"},
+        {title:"tweetId",disabled:true,type:"text"}
     ];
 
     render(){

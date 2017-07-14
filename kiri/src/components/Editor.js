@@ -92,7 +92,7 @@ class Editor extends React.Component{
 			let submitData = this.state.submitData;
 			submitData["updateAt"] = updateAt;
 			this.props.submit(this.props.id,submitData);
-			this.setState(submitData);
+			this.setState({submitData,open:true});
 		}
 		else if(this.state.msg===""){
 			this.setState({open:true,msg:"请更改数据在提交"})

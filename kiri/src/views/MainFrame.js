@@ -37,7 +37,7 @@ import TweetFragmentDetail from './detail/TweetFragmentDetail' ;
 import CommentDetail from './detail/CommentDetail' ;
 import CollectionDetail from './detail/CollectionDetail' ;
 import FavoriteDetail from './detail/FavoriteDetail' ;
-
+import UserAdd from './addInfo/UserAdd';
 
 class MainFrame extends React.Component{
 
@@ -188,7 +188,7 @@ class MainFrame extends React.Component{
 					<div className={this.state.drawerOpen?classes.offset:{}}>
 						{
 							<Switch>
-								<Route path='/Home' component={Home}/>
+								<Route path='/Home' exact component={Home}/>
 								<Route path="/Tweets" exact component={Tweets}/>
 								<Route path="/Fragments" exact component={TweetFragments} />
 								<Route path="/Users"  exact component={Users} />
@@ -200,17 +200,18 @@ class MainFrame extends React.Component{
 								<Route path="/Collections" exact component={Collections} />
 								<Route path="/Favorites" exact component={Favorites} />
 
-								<Route path="/Tweets/:id" component={TweetDetail}/>
-								<Route path="/Users/:id" component={UserDetail}/>
-								<Route path="/UserFollow/:id" component={UserFollowDetail} />
-								<Route path="/Role/:id" component={RoleDetail} />
-								<Route path="/Orgs/:id" component={OrgDetail} />
-								<Route path="/OrgMembers/:id" component={OrgMemberDetail} />
-								<Route path="/Fragments/:id" component={TweetFragmentDetail} />
-								<Route path="/Comments/:id" component={CommentDetail} />
-								<Route path="/Collections/:id" component={CollectionDetail} />
-								<Route path="/Favorites/:id" component={FavoriteDetail} />
-							
+								<Route path="/Tweets/:id" exact component={TweetDetail}/>
+								<Route path="/Users/:id" exact component={UserDetail}/>
+								<Route path="/UserFollow/:id" exact component={UserFollowDetail} />
+								<Route path="/Role/:id" exact component={RoleDetail} />
+								<Route path="/Orgs/:id" exact component={OrgDetail} />
+								<Route path="/OrgMembers/:id" exact component={OrgMemberDetail} />
+								<Route path="/Fragments/:id" exact component={TweetFragmentDetail} />
+								<Route path="/Comments/:id" exact component={CommentDetail} />
+								<Route path="/Collections/:id" exact component={CollectionDetail} />
+								<Route path="/Favorites/:id" exact component={FavoriteDetail} />
+								
+								<Route path="/addUsers" exact component={UserAdd}/>
 							</Switch>
 						}
 					</div>

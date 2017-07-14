@@ -12,6 +12,7 @@ export default class Users extends React.Component{
 				callback={listUser}
                 url={"/Users"}
 			    delete={deleteUser}
+			    title={"Users"}
 			/>
 		)
 	}
