@@ -56,6 +56,7 @@ class MainPageContent extends React.Component{
 				<MainPageListContent
 					head={this.head.reverse()}
 					data={this.state.data}
+					title={this.props.title}
 					properties={this.properties}
 					url={this.props.url}
 				    delete={this.props.delete}

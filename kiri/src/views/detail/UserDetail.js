@@ -6,7 +6,7 @@ class UserDetail extends React.Component{
 
 	properties = [
 		{title:"username",disabled:false,type:"text"},
-		{title:"password",disabled:false,type:"text"},
+		{title:"password",disabled:false,type:"password"},
 		{title:"email",disabled:false,type:"email"},
 		{title:"phone",disabled:false,type:"phone"},
 		{title:"nickname",disabled:false,type:"text"},

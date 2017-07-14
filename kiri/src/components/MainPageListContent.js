@@ -11,7 +11,7 @@ import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox';
 import Button from 'material-ui/Button';
 import {Link} from 'react-router-dom';
-
+import TableToolBar from "./TableToolBar"
 
 class MainPageListContentHead extends React.Component {
 	
@@ -132,6 +132,7 @@ class MainPageListContent extends React.Component {
 
 		return (
 			<Paper className={classes.paper}>
+				<TableToolBar title={this.props.title} url={this.props.url} />
 				<Table>
 					<MainPageListContentHead
 						columnData={this.props.head}

@@ -11,14 +11,10 @@ export function listUser() {
         })
 }
 
-export function saveUser(username, password, nickname) {
+export function saveUser(user) {
     const url = BASE_URL + 'users';
-
-    return axios.post(url, querystring.stringify({
-        username: username,
-        password: password,
-        nickname: nickname
-    }))
+    console.log(user);
+    return axios.post(url, querystring.stringify(user))
         .then(res => {
             return Promise.resolve(res.data)
         })
